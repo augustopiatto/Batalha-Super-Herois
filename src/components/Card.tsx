@@ -16,6 +16,7 @@ export default function Card({ card }: CardInterface) {
         height="0"
         width="0"
         sizes="100vw"
+        priority
         className="w-[250px] h-auto rounded-t-lg cursor-pointer"
       />
       <div className={`${cardColor} border-t-2 ${cardBorderColor} px-2 py-2`}>

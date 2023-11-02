@@ -2,6 +2,7 @@ import { BattleContext } from "@/contexts/BattleContext";
 import CardInterface from "@/interfaces/CardInterface";
 import Image from "next/image";
 import React from "react";
+import Switch from "@mui/material/Switch";
 
 interface Card {
   card: CardInterface;
@@ -23,16 +24,15 @@ export default function Card({ card }: Card) {
     }
   }
 
-  const cardBorderColor = `border-${card.biography.alignment}-border`;
-  const cardColor = `bg-${card.biography.alignment}`;
-
-  const teste = selectedHeroes.includes(card.id)
-    ? "bg-slate-400"
-    : "bg-slate-100";
+  const cardBorderColor =
+    card.biography.alignment === "good"
+      ? "border-good-border"
+      : "border-evil-border";
+  const cardColor = card.biography.alignment === "good" ? "bg-good" : "bg-evil";
 
   return (
     <div
-      className={`rounded-lg border ${cardBorderColor} shadow-md hover:scale-105 hover:shadow-card-highlight`}
+      className={`rounded-lg border ${cardBorderColor} shadow-md relative hover:scale-105 hover:shadow-card-highlight`}
     >
       <Image
         src={card.images.lg}
@@ -44,8 +44,20 @@ export default function Card({ card }: Card) {
         className="w-[250px] h-auto rounded-t-lg cursor-pointer"
         onClick={() => selectHeroes(card)}
       />
+      <Switch
+        checked={!!selectedHeroes.includes(card.id)}
+        sx={{
+          "&.MuiSwitch-root .Mui-checked + .MuiSwitch-track": {
+            backgroundColor: "green",
+          },
+          "&.MuiSwitch-root .Mui-checked": {
+            color: "green",
+          },
+        }}
+        className="absolute top-1 left-1 text-white bg-slate-400 m-1 rounded-full"
+      />
       <div
-        className={`${cardColor} ${teste} border-t-2 ${cardBorderColor} px-2 py-2`}
+        className={`${cardColor} rounded-b-lg border-t-2 ${cardBorderColor} px-2 py-2`}
       >
         <h1 className="text-3xl text-center capitalize font-semibold">
           {card.name}

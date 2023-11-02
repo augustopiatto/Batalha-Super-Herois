@@ -9,12 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       minHeight: {
-        content: "calc(100vh - 66px)",
+        content: "calc(100vh - 80px)",
       },
       boxShadow: {
         "card-highlight": "0 8px 15px 3px rgb(0 0 0 / 0.7)",
       },
       colors: {
+        "black-light": "rgb(70, 72, 81)",
         black: "rgb(50, 52, 61)",
         "black-dark": "rgb(26, 27, 32)",
         white: "rgb(238, 238, 243)",
@@ -25,6 +26,9 @@ const config: Config = {
         "evil-border": "rgb(198, 59, 50)",
         success: "rgb(4, 218, 0)",
         error: "rgb(232, 28, 0)",
+      },
+      zIndex: {
+        n1: "-1",
       },
     },
   },

@@ -14,7 +14,7 @@ export default function Header() {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar className="z-10">
       <Toolbar className="bg-black-dark h-20 flex relative">
         <h1 className="absolute left-1/2 translate-x-[-50%] uppercase text-3xl text-grey font-semibold">
           Jornada do Herói

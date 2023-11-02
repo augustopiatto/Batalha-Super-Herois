@@ -14,7 +14,7 @@ export default function Content() {
   }
 
   return (
-    <div className="max-w-[1440px] mx-auto bg-black min-h-content relative z-n1">
+    <div className="max-w-[1440px] mt-20 mx-auto bg-black min-h-content relative">
       <Deck />
       <Filters />
       {selectedHeroesIds && selectedHeroesIds.length === 2 && (

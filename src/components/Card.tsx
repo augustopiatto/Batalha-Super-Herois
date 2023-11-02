@@ -25,15 +25,16 @@ export default function Card({ card }: Card) {
     }
   }
 
-  const cardBorderColor =
+  const shadowHoverColor =
     card.biography.alignment === "good"
-      ? "border-good-border"
-      : "border-evil-border";
-  const cardColor = card.biography.alignment === "good" ? "bg-good" : "bg-evil";
+      ? "hover:shadow-good-dark"
+      : "hover:shadow-evil-dark";
+  const cardDetail =
+    card.biography.alignment === "good" ? "shadow-good" : "shadow-evil";
 
   return (
     <div
-      className={`rounded-lg border ${cardBorderColor} shadow-md relative hover:scale-105 hover:shadow-card-highlight`}
+      className={`flex flex-col rounded-lg border-4 border-black-dark shadow-md w-[220px] relative hover:scale-105 hover:shadow-card-highlight ${shadowHoverColor}`}
     >
       <Image
         src={card.images.lg}
@@ -42,7 +43,7 @@ export default function Card({ card }: Card) {
         width="0"
         sizes="100vw"
         priority
-        className="w-[250px] h-auto rounded-t-lg cursor-pointer"
+        className="w-[220px] h-auto rounded-t-md cursor-pointer"
         onClick={() => selectHeroes(card)}
       />
       <Switch
@@ -54,17 +55,22 @@ export default function Card({ card }: Card) {
           "&.MuiSwitch-root .Mui-checked": {
             color: "green",
           },
+          "&.MuiSwitch-root .MuiSwitch-track": {
+            backgroundColor: "rgb(220, 220, 226)",
+          },
         }}
-        className="absolute top-1 left-1 text-white bg-slate-400 m-1 rounded-full"
+        className="absolute top-1 left-1 text-white bg-black rounded-full"
+        onClick={() => selectHeroes(card)}
       />
       <div
-        className={`${cardColor} rounded-b-lg border-t-2 ${cardBorderColor} px-2 py-2`}
+        className={`bg-black-light shadow-card-inner ${cardDetail} h-full rounded-b-md border-t-4 border-black-dark px-2 py-2`}
       >
-        <h1 className="text-3xl text-center capitalize font-semibold">
+        <h1 className="text-3xl text-center text-grey capitalize font-semibold">
           {card.name}
         </h1>
-        <p className="text-xl text-center capitalize py-4">
-          {card.appearance.race} - {card.biography.alignment}
+        <p className="text-xl text-center text-grey capitalize py-4">
+          {card.appearance.race ? card.appearance.race : "unknown"} -{" "}
+          {card.biography.alignment}
         </p>
       </div>
     </div>

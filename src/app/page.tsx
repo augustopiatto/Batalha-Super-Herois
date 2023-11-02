@@ -8,6 +8,7 @@ import Icon from "@mui/material/Icon";
 import Deck from "../components/Deck";
 import React from "react";
 import CardInterface from "@/interfaces/CardInterface";
+import { fakeDeck } from "@/helpers/apimock/fakeDeck";
 
 export default function Home() {
   const [deck, setDeck] = React.useState<CardInterface[]>([]);
@@ -18,6 +19,7 @@ export default function Home() {
   function routeToCards() {
     return;
   }
+
   async function loadDeck() {
     const response = await fetch(
       "http://homologacao3.azapfy.com.br/api/ps/metahumans"
@@ -26,8 +28,13 @@ export default function Home() {
     setDeck(json);
   }
 
+  function loadFakeDeck() {
+    setDeck(fakeDeck);
+  }
+
   React.useEffect(() => {
-    loadDeck();
+    // loadDeck();
+    loadFakeDeck();
   }, []);
 
   return (
@@ -61,7 +68,7 @@ export default function Home() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Deck />
+      {deck && deck.length && <Deck {...deck} />}
     </main>
   );
 }

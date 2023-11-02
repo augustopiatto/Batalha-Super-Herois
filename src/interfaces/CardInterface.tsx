@@ -10,7 +10,7 @@ interface Appearance {
 interface Biography {
   aliases: string[];
   alignment: string;
-  alterEgos: "No alter egos found." | string;
+  alterEgos: string;
   firstAppearance: string;
   fullName: string;
   placeOfBirth: string;

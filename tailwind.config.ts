@@ -9,7 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       minHeight: {
-        "deck-content": "calc(100vh - 66px)",
+        content: "calc(100vh - 66px)",
+      },
+      boxShadow: {
+        "card-highlight": "0 8px 15px 3px rgb(0 0 0 / 0.7)",
+      },
+      colors: {
+        good: "rgb(109, 145, 237)",
+        "good-border": "rgb(71, 117, 236)",
+        evil: "rgb(233, 101, 101)",
+        "evil-border": "rgb(198, 59, 50)",
       },
     },
   },

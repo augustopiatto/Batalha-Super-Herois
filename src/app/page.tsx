@@ -2,15 +2,18 @@
 
 import Content from "@/components/Content";
 import Header from "@/components/Header";
-import { DeckStorage } from "@/contexts/DeckContext";
+import { HeroesStorage } from "@/contexts/HeroesContext";
+import { BattleStorage } from "@/contexts/BattleContext";
 
 export default function Home() {
   return (
     <main>
-      <DeckStorage>
-        <Header />
-        <Content />
-      </DeckStorage>
+      <HeroesStorage>
+        <BattleStorage>
+          <Header />
+          <Content />
+        </BattleStorage>
+      </HeroesStorage>
     </main>
   );
 }

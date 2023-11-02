@@ -1,13 +1,13 @@
 import React from "react";
 import SearchName from "./SearchName";
 import Button from "@mui/material/Button";
-import { DeckContext } from "@/contexts/DeckContext";
+import { HeroesContext } from "@/contexts/HeroesContext";
 
 export default function Filter() {
   const [opened, setOpened] = React.useState<boolean>(false);
   const [name, setName] = React.useState<string | null>(null);
 
-  const { deck, setFilteredDeck } = React.useContext(DeckContext);
+  const { deck, setFilteredDeck } = React.useContext(HeroesContext);
 
   function openMenu() {
     setOpened(!opened);

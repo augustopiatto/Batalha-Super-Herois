@@ -1,9 +1,9 @@
 import Card from "./Card";
 import React from "react";
-import { DeckContext } from "@/contexts/DeckContext";
+import { HeroesContext } from "@/contexts/HeroesContext";
 
 export default function Deck() {
-  const { filteredDeck } = React.useContext(DeckContext);
+  const { filteredDeck } = React.useContext(HeroesContext);
 
   return (
     <div className="py-5 px-10 flex gap-10">

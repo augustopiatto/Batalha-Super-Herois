@@ -2,17 +2,17 @@ import { fakeDeck } from "@/helpers/apimock/fakeDeck";
 import CardInterface from "@/interfaces/CardInterface";
 import React, { ReactNode } from "react";
 
-type DeckContextType = {
+type HeroesContextType = {
   deck: CardInterface[];
   filteredDeck: CardInterface[];
   setFilteredDeck: (message: CardInterface[]) => void;
 };
 
-export const DeckContext = React.createContext<DeckContextType>(
-  {} as DeckContextType
+export const HeroesContext = React.createContext<HeroesContextType>(
+  {} as HeroesContextType
 );
 
-export const DeckStorage = ({ children }: { children: ReactNode[] }) => {
+export const HeroesStorage = ({ children }: { children: ReactNode }) => {
   const [deck, setDeck] = React.useState<CardInterface[]>([]);
   const [filteredDeck, setFilteredDeck] = React.useState<CardInterface[]>([]);
 
@@ -38,8 +38,8 @@ export const DeckStorage = ({ children }: { children: ReactNode[] }) => {
   }, [deck]);
 
   return (
-    <DeckContext.Provider value={{ deck, filteredDeck, setFilteredDeck }}>
+    <HeroesContext.Provider value={{ deck, filteredDeck, setFilteredDeck }}>
       {children}
-    </DeckContext.Provider>
+    </HeroesContext.Provider>
   );
 };

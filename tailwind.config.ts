@@ -15,6 +15,10 @@ const config: Config = {
         "card-highlight": "0 8px 15px 3px rgb(0 0 0 / 0.7)",
       },
       colors: {
+        black: "rgb(50, 52, 61)",
+        "black-dark": "rgb(26, 27, 32)",
+        white: "rgb(238, 238, 243)",
+        grey: "rgb(220, 220, 226)",
         good: "rgb(109, 145, 237)",
         "good-border": "rgb(71, 117, 236)",
         evil: "rgb(233, 101, 101)",

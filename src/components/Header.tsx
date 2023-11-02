@@ -15,26 +15,26 @@ export default function Header() {
 
   return (
     <AppBar position="static">
-      <Toolbar className="flex relative">
-        <h1 className="absolute left-1/2 translate-x-[-50%] uppercase text-2xl">
+      <Toolbar className="bg-black-dark h-20 flex relative">
+        <h1 className="absolute left-1/2 translate-x-[-50%] uppercase text-3xl text-grey font-semibold">
           Jornada do Herói
         </h1>
         <IconButton
-          className="ml-auto"
+          className="bg-black text-grey ml-auto mr-8 flex items-center gap-2"
           size="large"
-          aria-haspopup="true"
           onClick={routeToCards}
-          color="inherit"
+          sx={{
+            borderRadius: "16px",
+            padding: "0px 16px",
+            "&:hover": {
+              backgroundColor: "rgb(71, 117, 236)",
+            },
+          }}
         >
           <Icon>style</Icon>
           Cartas
         </IconButton>
-        <IconButton
-          size="large"
-          aria-haspopup="true"
-          onClick={openUserOptions}
-          color="inherit"
-        >
+        <IconButton size="large" onClick={openUserOptions}>
           <Avatar />
         </IconButton>
       </Toolbar>

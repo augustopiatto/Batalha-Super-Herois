@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import Icon from "@mui/material/Icon";
+import Deck from "./components/Deck";
 
 export default function Home() {
   function openUserOptions() {
@@ -18,7 +19,7 @@ export default function Home() {
     <main>
       <AppBar position="static">
         <Toolbar className="flex relative">
-          <h1 className="absolute left-1/2 uppercase text-2xl">
+          <h1 className="absolute left-1/2 translate-x-[-50%] uppercase text-2xl">
             Jornada do Herói
           </h1>
           <IconButton
@@ -45,6 +46,7 @@ export default function Home() {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <Deck />
     </main>
   );
 }

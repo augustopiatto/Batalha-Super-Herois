@@ -3,10 +3,10 @@ import Deck from "./Deck";
 import Filters from "./filters/Filters";
 import React from "react";
 import { BattleContext } from "@/contexts/BattleContext";
-import Dialog from "@mui/material/Dialog";
+import BattleDialog from "./BattleDialog";
 
 export default function Content() {
-  const { selectedHeroes, setSelectedHeroes } = React.useContext(BattleContext);
+  const { selectedHeroesIds } = React.useContext(BattleContext);
   const [open, setOpen] = React.useState<boolean>(false);
 
   function toggleBattleModal(value: boolean) {
@@ -17,13 +17,11 @@ export default function Content() {
     <div className="bg-slate-100 min-h-content relative">
       <Deck />
       <Filters />
-      {selectedHeroes && selectedHeroes.length === 2 && (
+      {selectedHeroesIds && selectedHeroesIds.length === 2 && (
         <Button onClick={() => toggleBattleModal(true)}>Batalhar!</Button>
       )}
       {open && (
-        <Dialog onClose={() => toggleBattleModal(false)} open={open}>
-          Oi
-        </Dialog>
+        <BattleDialog open={open} toggleBattleModal={toggleBattleModal} />
       )}
     </div>
   );

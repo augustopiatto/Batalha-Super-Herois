@@ -9,18 +9,19 @@ interface Card {
 }
 
 export default function Card({ card }: Card) {
-  const { selectedHeroes, setSelectedHeroes } = React.useContext(BattleContext);
+  const { selectedHeroesIds, setSelectedHeroesIds } =
+    React.useContext(BattleContext);
 
   async function selectHeroes(hero: CardInterface) {
-    const wasCardSelected = !!selectedHeroes.includes(hero.id);
-    if (selectedHeroes.length < 2 && !wasCardSelected) {
-      const heroesToBattle = [...selectedHeroes, hero.id];
-      await setSelectedHeroes(heroesToBattle);
+    const wasCardSelected = !!selectedHeroesIds.includes(hero.id);
+    if (selectedHeroesIds.length < 2 && !wasCardSelected) {
+      const heroesToBattle = [...selectedHeroesIds, hero.id];
+      await setSelectedHeroesIds(heroesToBattle);
     } else if (wasCardSelected) {
-      const remainingHeroes = selectedHeroes.filter(
+      const remainingHeroes = selectedHeroesIds.filter(
         (selHero) => selHero !== hero.id
       );
-      await setSelectedHeroes(remainingHeroes);
+      await setSelectedHeroesIds(remainingHeroes);
     }
   }
 
@@ -45,7 +46,7 @@ export default function Card({ card }: Card) {
         onClick={() => selectHeroes(card)}
       />
       <Switch
-        checked={!!selectedHeroes.includes(card.id)}
+        checked={!!selectedHeroesIds.includes(card.id)}
         sx={{
           "&.MuiSwitch-root .Mui-checked + .MuiSwitch-track": {
             backgroundColor: "green",

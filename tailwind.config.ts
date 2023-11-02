@@ -19,6 +19,8 @@ const config: Config = {
         "good-border": "rgb(71, 117, 236)",
         evil: "rgb(233, 101, 101)",
         "evil-border": "rgb(198, 59, 50)",
+        success: "rgb(4, 218, 0)",
+        error: "rgb(232, 28, 0)",
       },
     },
   },

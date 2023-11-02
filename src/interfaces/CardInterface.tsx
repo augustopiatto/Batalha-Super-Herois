@@ -29,7 +29,7 @@ interface Images {
   xs: string;
 }
 
-interface PowerStats {
+export interface PowerStats {
   combat: number;
   durability: number;
   intelligence: number;

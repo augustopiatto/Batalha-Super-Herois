@@ -2,8 +2,8 @@ import CardInterface from "@/interfaces/CardInterface";
 import React, { ReactNode } from "react";
 
 type BattleContextType = {
-  selectedHeroes: number[];
-  setSelectedHeroes: (cardId: number[]) => void;
+  selectedHeroesIds: number[];
+  setSelectedHeroesIds: (cardId: number[]) => void;
 };
 
 export const BattleContext = React.createContext<BattleContextType>(
@@ -11,10 +11,12 @@ export const BattleContext = React.createContext<BattleContextType>(
 );
 
 export const BattleStorage = ({ children }: { children: ReactNode[] }) => {
-  const [selectedHeroes, setSelectedHeroes] = React.useState<number[]>([]);
+  const [selectedHeroesIds, setSelectedHeroesIds] = React.useState<number[]>(
+    []
+  );
 
   return (
-    <BattleContext.Provider value={{ selectedHeroes, setSelectedHeroes }}>
+    <BattleContext.Provider value={{ selectedHeroesIds, setSelectedHeroesIds }}>
       {children}
     </BattleContext.Provider>
   );

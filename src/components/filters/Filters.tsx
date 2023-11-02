@@ -1,14 +1,24 @@
 import React from "react";
-import SearchBar from "./SearchBar";
+import SearchName from "./SearchName";
 import Button from "@mui/material/Button";
+import { DeckContext } from "@/contexts/DeckContext";
 
 export default function Filter() {
   const [opened, setOpened] = React.useState<boolean>(false);
+  const [name, setName] = React.useState<string | null>(null);
+
+  const { deck, setFilteredDeck } = React.useContext(DeckContext);
 
   function openMenu() {
     setOpened(!opened);
   }
   function applyFilters() {
+    if (name) {
+      const filteredHero = deck.filter((hero) => hero.name === name);
+      setFilteredDeck(filteredHero);
+    } else {
+      setFilteredDeck(deck);
+    }
     return;
   }
 
@@ -25,7 +35,7 @@ export default function Filter() {
       </Button>
       {opened && (
         <div className="bg-slate-300 w-[300px] h-[500px] p-5 flex flex-col">
-          <SearchBar />
+          <SearchName deck={deck} setName={setName} />
           <Button
             className="h-10 bg-slate-300 "
             onClick={() => {

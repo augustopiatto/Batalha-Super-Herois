@@ -1,35 +1,15 @@
-import CardInterface from "@/interfaces/CardInterface";
 import Card from "./Card";
 import React from "react";
-import { fakeDeck } from "@/helpers/apimock/fakeDeck";
+import { DeckContext } from "@/contexts/DeckContext";
 
 export default function Deck() {
-  const [deck, setDeck] = React.useState<CardInterface[]>([]);
-
-  async function loadDeck() {
-    const response = await fetch(
-      "http://homologacao3.azapfy.com.br/api/ps/metahumans"
-    );
-    const json = await response.json();
-    setDeck(json);
-  }
-
-  function loadFakeDeck() {
-    setDeck(fakeDeck);
-  }
-
-  React.useEffect(() => {
-    if (!deck.length) {
-      // loadDeck();
-      loadFakeDeck();
-    }
-  }, [deck]);
+  const { filteredDeck } = React.useContext(DeckContext);
 
   return (
     <div className="py-5 px-10 flex gap-10">
-      {deck &&
-        deck.length &&
-        deck.map((card) => <Card card={card} key={card.id} />)}
+      {filteredDeck &&
+        filteredDeck.length &&
+        filteredDeck.map((card) => <Card card={card} key={card.id} />)}
     </div>
   );
 }

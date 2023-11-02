@@ -2,7 +2,11 @@ import CardInterface from "@/interfaces/CardInterface";
 import Image from "next/image";
 import React from "react";
 
-export default function Card({ card }: CardInterface) {
+interface Card {
+  card: CardInterface;
+}
+
+export default function Card({ card }: Card) {
   const cardBorderColor = `border-${card.biography.alignment}-border`;
   const cardColor = `bg-${card.biography.alignment}`;
 

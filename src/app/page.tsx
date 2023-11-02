@@ -5,15 +5,30 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import Icon from "@mui/material/Icon";
-import Deck from "./components/Deck";
+import Deck from "../components/Deck";
+import React from "react";
+import CardInterface from "@/interfaces/CardInterface";
 
 export default function Home() {
+  const [deck, setDeck] = React.useState<CardInterface[]>([]);
+
   function openUserOptions() {
     return;
   }
   function routeToCards() {
     return;
   }
+  async function loadDeck() {
+    const response = await fetch(
+      "http://homologacao3.azapfy.com.br/api/ps/metahumans"
+    );
+    const json = await response.json();
+    setDeck(json);
+  }
+
+  React.useEffect(() => {
+    loadDeck();
+  }, []);
 
   return (
     <main>

@@ -17,21 +17,20 @@ export default function Content() {
     <div className="max-w-[1440px] mt-20 mx-auto bg-black min-h-content relative">
       <Deck />
       <Filters />
-      {selectedHeroesIds && selectedHeroesIds.length === 2 && (
-        <div className="w-full my-20 flex justify-center">
-          <Button
-            onClick={() => toggleBattleModal(true)}
-            sx={{
-              "&:hover": {
-                backgroundColor: "rgb(26, 27, 32)",
-              },
-            }}
-            className="bg-good text-3xl text-grey rounded-2xl px-10 py-4"
-          >
-            Batalhar!
-          </Button>
-        </div>
-      )}
+      <div className="w-full my-20 flex justify-center">
+        <Button
+          sx={{
+            "&.Mui-disabled": {
+              backgroundColor: "rgb(70, 72, 81)",
+            },
+          }}
+          className="bg-black-light text-3xl text-grey rounded-2xl px-10 py-4 hover:bg-black-dark"
+          disabled={selectedHeroesIds && selectedHeroesIds.length !== 2}
+          onClick={() => toggleBattleModal(true)}
+        >
+          Batalhar!
+        </Button>
+      </div>
       {open && (
         <BattleDialog open={open} toggleBattleModal={toggleBattleModal} />
       )}

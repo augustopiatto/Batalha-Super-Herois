@@ -33,8 +33,8 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
 
   React.useEffect(() => {
     if (!deck.length) {
-      loadDeck();
-      // loadFakeDeck();
+      // loadDeck();
+      loadFakeDeck();
     }
   }, [deck]);
 

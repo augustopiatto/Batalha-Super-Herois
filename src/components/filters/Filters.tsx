@@ -1,6 +1,6 @@
 import React from "react";
 import SearchName from "./SearchName";
-import Button from "@mui/material/Button";
+import { Button } from "@mui/material";
 import { HeroesContext } from "@/contexts/HeroesContext";
 
 export default function Filter() {
@@ -25,8 +25,13 @@ export default function Filter() {
   return (
     <div className="absolute top-5 right-0 flex">
       <Button
-        className="items-start h-10 bg-slate-300 "
-        sx={{ borderRadius: "4px 0px 0px 4px" }}
+        sx={{
+          borderRadius: "8px 0px 0px 8px",
+          "&:hover": {
+            backgroundColor: "rgb(220, 220, 226)",
+          },
+        }}
+        className="bg-grey text-xl text-black-dark items-start h-10 px-3"
         onClick={() => {
           openMenu();
         }}
@@ -34,16 +39,18 @@ export default function Filter() {
         Filtros
       </Button>
       {opened && (
-        <div className="bg-slate-300 w-[300px] h-[500px] p-5 flex flex-col">
+        <div className="bg-grey w-[300px] h-full rounded-b-lg p-5 flex flex-col justify-between">
           <SearchName deck={deck} setName={setName} />
-          <Button
-            className="h-10 bg-slate-300 "
-            onClick={() => {
-              applyFilters();
-            }}
-          >
-            Aplicar
-          </Button>
+          <div className="w-full mt-4 flex justify-center">
+            <Button
+              className="bg-black-light rounded-lg text-grey py-2 px-4 hover:bg-black-dark"
+              onClick={() => {
+                applyFilters();
+              }}
+            >
+              Aplicar
+            </Button>
+          </div>
         </div>
       )}
     </div>

@@ -35,19 +35,7 @@ export default function SearchName({ deck, setName }: SearchName) {
           {option.name}
         </Box>
       )}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Herói"
-          // InputProps={{
-          //   endAdornment: (
-          //     <InputAdornment position="end">
-          //       <Icon>search</Icon>
-          //     </InputAdornment>
-          //   ),
-          // }}
-        />
-      )}
+      renderInput={(params) => <TextField {...params} label="Herói" />}
     />
   );
 }

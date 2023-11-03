@@ -45,6 +45,7 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
   React.useEffect(() => {
     if (!deck.length) {
       loadDeck();
+      //: use o fakeDeck se não quiser ficar chamando a API
       // loadFakeDeck();
     }
   }, [deck]);

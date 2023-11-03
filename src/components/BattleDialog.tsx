@@ -42,7 +42,6 @@ export default function BattleDialog({
     return finalObject;
   }
 
-  //
   function getWinner(hero1: CardInterface, hero2: CardInterface): string {
     const sumHero1 = Object.keys(hero1.powerstats).reduce(
       (acc, cur) => (acc += hero1.powerstats[cur as keyof PowerStats]),

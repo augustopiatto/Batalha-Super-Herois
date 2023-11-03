@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
 import Deck from "./Deck";
 import OpenFilters from "./filters/OpenFilters";
 import React from "react";
@@ -31,6 +32,22 @@ export default function Content() {
           Batalhar!
         </Button>
       </div>
+      <Pagination
+        sx={{
+          "& .MuiPaginationItem-root": {
+            backgroundColor: "rgb(70, 72, 81)",
+            color: "rgb(220, 220, 226)",
+          },
+          "& .Mui-selected": {
+            border: "3px solid rgb(220, 220, 226)",
+          },
+        }}
+        count={10}
+        color="secondary"
+        variant="outlined"
+        shape="rounded"
+        className="absolute bottom-10 left-1/2 translate-x-[-50%]"
+      />
       {open && (
         <BattleDialog open={open} toggleBattleModal={toggleBattleModal} />
       )}

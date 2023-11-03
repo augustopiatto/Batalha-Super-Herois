@@ -22,38 +22,6 @@ export default function BattleDialog({
   const { selectedHeroesIds } = React.useContext(BattleContext);
   const { deck } = React.useContext(HeroesContext);
 
-  //: Corrigir esse método
-
-  // function comparePowerstats(
-  //   powerstats1: PowerStats,
-  //   powerstats2: PowerStats,
-  //   hero1Powerstats: PowerstatsObject[],
-  //   hero2Powerstats: PowerstatsObject[]
-  // ): void {
-  //   Object.keys(powerstats1).forEach((powerstat) => {
-  //     if (
-  //       powerstats1[powerstat as keyof PowerStats] >
-  //       powerstats2[powerstat as keyof PowerStats]
-  //     ) {
-  //       hero1Powerstats = hero1Powerstats.map((stat) => {
-  //         return {
-  //           [Object.keys(stat)[0]]: stat[Object.keys(stat)[0]],
-  //           winner: true,
-  //         };
-  //       });
-  //       console.log("hero1Powerstats", hero1Powerstats);
-  //     } else {
-  //       hero2Powerstats = hero2Powerstats.map((stat) => {
-  //         return {
-  //           [Object.keys(stat)[0]]: stat[Object.keys(stat)[0]],
-  //           winner: true,
-  //         };
-  //       });
-  //       console.log("hero2Powerstats", hero2Powerstats);
-  //     }
-  //   });
-  // }
-
   function comparePowerstats(
     powerstats1: PowerStats,
     powerstats2: PowerStats

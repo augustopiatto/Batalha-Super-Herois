@@ -5,10 +5,19 @@ import OpenFilters from "./filters/OpenFilters";
 import React from "react";
 import { BattleContext } from "@/contexts/BattleContext";
 import BattleDialog from "./BattleDialog";
+import { HeroesContext } from "@/contexts/HeroesContext";
 
 export default function Content() {
   const { selectedHeroesIds } = React.useContext(BattleContext);
+  const { allPages, selectPage } = React.useContext(HeroesContext);
+
   const [open, setOpen] = React.useState<boolean>(false);
+  const [page, setPage] = React.useState<number>(1);
+
+  function handleChange(event: React.ChangeEvent<unknown>, value: number) {
+    setPage(value);
+    selectPage(value);
+  }
 
   function toggleBattleModal(value: boolean) {
     setOpen(value);
@@ -42,11 +51,13 @@ export default function Content() {
             border: "3px solid rgb(220, 220, 226)",
           },
         }}
-        count={10}
-        color="secondary"
+        count={allPages}
+        page={page}
+        size="large"
         variant="outlined"
         shape="rounded"
         className="absolute bottom-10 left-1/2 translate-x-[-50%]"
+        onChange={handleChange}
       />
       {open && (
         <BattleDialog open={open} toggleBattleModal={toggleBattleModal} />

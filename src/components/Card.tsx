@@ -12,16 +12,16 @@ export default function Card({ card }: Card) {
   const { selectedHeroesIds, setSelectedHeroesIds } =
     React.useContext(BattleContext);
 
-  async function selectHeroes(hero: CardInterface) {
+  function selectHeroes(hero: CardInterface) {
     const wasCardSelected = !!selectedHeroesIds.includes(hero.id);
     if (selectedHeroesIds.length < 2 && !wasCardSelected) {
       const heroesToBattle = [...selectedHeroesIds, hero.id];
-      await setSelectedHeroesIds(heroesToBattle);
+      setSelectedHeroesIds(heroesToBattle);
     } else if (wasCardSelected) {
       const remainingHeroes = selectedHeroesIds.filter(
         (selHero) => selHero !== hero.id
       );
-      await setSelectedHeroesIds(remainingHeroes);
+      setSelectedHeroesIds(remainingHeroes);
     }
   }
 

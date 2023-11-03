@@ -21,8 +21,9 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
       "http://homologacao3.azapfy.com.br/api/ps/metahumans"
     );
     const json = await response.json();
-    setDeck(json.splice(0, 10));
-    setFilteredDeck(json.splice(0, 10));
+    const firstTen: CardInterface[] = json.splice(0, 10);
+    setDeck(firstTen);
+    setFilteredDeck(firstTen);
   }
 
   function loadFakeDeck() {

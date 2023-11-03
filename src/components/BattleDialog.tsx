@@ -3,11 +3,16 @@ import Dialog from "@mui/material/Dialog";
 import { BattleContext } from "@/contexts/BattleContext";
 import { HeroesContext } from "@/contexts/HeroesContext";
 import Image from "next/image";
-import { PowerStats } from "@/interfaces/CardInterface";
+import CardInterface, { PowerStats } from "@/interfaces/CardInterface";
 
 interface BattleDialog {
   open: boolean;
   toggleBattleModal: (value: boolean) => void;
+}
+
+interface PowerstatsObject {
+  [key: string]: number | boolean;
+  winner: boolean;
 }
 
 export default function BattleDialog({
@@ -17,53 +22,77 @@ export default function BattleDialog({
   const { selectedHeroesIds } = React.useContext(BattleContext);
   const { deck } = React.useContext(HeroesContext);
 
+  function createPowerstatsObject(powerstats: PowerStats): PowerstatsObject[] {
+    return Object.keys(powerstats).map((powerstat) => {
+      return {
+        [powerstat]: powerstats[powerstat as keyof PowerStats],
+        winner: false,
+      };
+    });
+  }
+
+  //: Corrigir esse método
+
+  // function comparePowerstats(
+  //   powerstats1: PowerStats,
+  //   powerstats2: PowerStats,
+  //   hero1Powerstats: PowerstatsObject[],
+  //   hero2Powerstats: PowerstatsObject[]
+  // ): void {
+  //   Object.keys(powerstats1).forEach((powerstat) => {
+  //     if (
+  //       powerstats1[powerstat as keyof PowerStats] >
+  //       powerstats2[powerstat as keyof PowerStats]
+  //     ) {
+  //       hero1Powerstats = hero1Powerstats.map((stat) => {
+  //         return {
+  //           [Object.keys(stat)[0]]: stat[Object.keys(stat)[0]],
+  //           winner: true,
+  //         };
+  //       });
+  //       console.log("hero1Powerstats", hero1Powerstats);
+  //     } else {
+  //       hero2Powerstats = hero2Powerstats.map((stat) => {
+  //         return {
+  //           [Object.keys(stat)[0]]: stat[Object.keys(stat)[0]],
+  //           winner: true,
+  //         };
+  //       });
+  //       console.log("hero2Powerstats", hero2Powerstats);
+  //     }
+  //   });
+  // }
+
+  function getWinner(hero1: CardInterface, hero2: CardInterface): string {
+    const sumHero1 = Object.keys(hero1.powerstats).reduce(
+      (acc, cur) => (acc += hero1.powerstats[cur as keyof PowerStats]),
+      0
+    );
+    const sumHero2 = Object.keys(hero2.powerstats).reduce(
+      (acc, cur) => (acc += hero2.powerstats[cur as keyof PowerStats]),
+      0
+    );
+    const winner = sumHero1 > sumHero2 ? hero1.name : hero2.name;
+    return winner;
+  }
+
   const selectedHeroesInfos = deck.filter((hero) =>
     selectedHeroesIds.includes(hero.id)
   );
-
   const hero1 = selectedHeroesInfos[0];
   const hero2 = selectedHeroesInfos[1];
 
-  let hero1Sum = 0;
-  let hero2Sum = 0;
+  const hero1Powerstats = createPowerstatsObject(hero1.powerstats);
+  const hero2Powerstats = createPowerstatsObject(hero2.powerstats);
 
-  let hero1Powerstats = Object.keys(hero1.powerstats).map((powerstat) => {
-    hero1Sum += hero1.powerstats[powerstat as keyof PowerStats];
-    return {
-      [powerstat]: hero1.powerstats[powerstat as keyof PowerStats],
-      winner: false,
-    };
-  });
-  let hero2Powerstats = Object.keys(hero2.powerstats).map((powerstat) => {
-    hero2Sum += hero2.powerstats[powerstat as keyof PowerStats];
-    return {
-      [powerstat]: hero2.powerstats[powerstat as keyof PowerStats],
-      winner: false,
-    };
-  });
+  // comparePowerstats(
+  //   hero1.powerstats,
+  //   hero2.powerstats,
+  //   hero1Powerstats,
+  //   hero2Powerstats
+  // );
 
-  const winner = hero1Sum > hero2Sum ? hero1.name : hero2.name;
-
-  Object.keys(hero1.powerstats).forEach((powerstat) => {
-    if (
-      hero1.powerstats[powerstat as keyof PowerStats] >
-      hero2.powerstats[powerstat as keyof PowerStats]
-    ) {
-      hero1Powerstats = hero1Powerstats.map((stat) => {
-        return {
-          [Object.keys(stat)[0]]: stat[Object.keys(stat)[0]],
-          winner: true,
-        };
-      });
-    } else {
-      hero2Powerstats = hero2Powerstats.map((stat) => {
-        return {
-          [Object.keys(stat)[0]]: stat[Object.keys(stat)[0]],
-          winner: true,
-        };
-      });
-    }
-  });
+  const winner = getWinner(hero1, hero2);
 
   return (
     <Dialog onClose={() => toggleBattleModal(false)} open={open}>

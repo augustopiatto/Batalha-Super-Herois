@@ -2,7 +2,7 @@
 
 # Visão Geral do Projeto
 
-Este é um projeto que usa React, Typescript, Next, Material-UI, TailwindCSS e Jest.
+Este é um projeto que usa React, Typescript, Next, Material-UI e TailwindCSS.
 É uma stack de desenvolvimento web moderna que é rápida e eficiente para construir aplicativos web escaláveis.
 
 # Preview
@@ -13,7 +13,15 @@ O projeto é um deck de super-heróis fornecido pela Azapy. Existe a listagem de
 
 ## Deck
 
+![Deck](./public/deck.png)
+
 ## Batalha
+
+![Batalha](./public/batalha.png)
+
+## Filtros
+
+![Filtros](./public/filtros.png)
 
 # Começando
 
@@ -38,9 +46,9 @@ O projeto inclui as seguintes tecnologias:
 
 O projeto possui as seguintes funcionalidades:
 
+- Ver os personagens aos poucos, com paginação
 - Permitir ao usuário filtrar o herói
 - Permitir ao usuário escolher 2 heróis para um combate
-- (TODO) Olhar os `powerstats` de cada herói
 
 # Scripts
 

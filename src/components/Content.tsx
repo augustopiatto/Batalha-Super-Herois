@@ -18,7 +18,19 @@ export default function Content() {
       <Deck />
       <Filters />
       {selectedHeroesIds && selectedHeroesIds.length === 2 && (
-        <Button onClick={() => toggleBattleModal(true)}>Batalhar!</Button>
+        <div className="w-full my-20 flex justify-center">
+          <Button
+            onClick={() => toggleBattleModal(true)}
+            sx={{
+              "&:hover": {
+                backgroundColor: "rgb(26, 27, 32)",
+              },
+            }}
+            className="bg-good text-3xl text-grey rounded-2xl px-10 py-4"
+          >
+            Batalhar!
+          </Button>
+        </div>
       )}
       {open && (
         <BattleDialog open={open} toggleBattleModal={toggleBattleModal} />

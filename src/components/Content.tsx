@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import Deck from "./Deck";
-import Filters from "./filters/Filters";
+import OpenFilters from "./filters/OpenFilters";
 import React from "react";
 import { BattleContext } from "@/contexts/BattleContext";
 import BattleDialog from "./BattleDialog";
@@ -16,7 +16,7 @@ export default function Content() {
   return (
     <div className="max-w-[1440px] mt-20 mx-auto bg-black min-h-content relative">
       <Deck />
-      <Filters />
+      <OpenFilters />
       <div className="w-full my-20 flex justify-center">
         <Button
           sx={{

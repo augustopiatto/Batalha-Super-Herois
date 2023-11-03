@@ -22,15 +22,6 @@ export default function BattleDialog({
   const { selectedHeroesIds } = React.useContext(BattleContext);
   const { deck } = React.useContext(HeroesContext);
 
-  function createPowerstatsObject(powerstats: PowerStats): PowerstatsObject[] {
-    return Object.keys(powerstats).map((powerstat) => {
-      return {
-        [powerstat]: powerstats[powerstat as keyof PowerStats],
-        winner: false,
-      };
-    });
-  }
-
   //: Corrigir esse método
 
   // function comparePowerstats(
@@ -63,6 +54,27 @@ export default function BattleDialog({
   //   });
   // }
 
+  function comparePowerstats(
+    powerstats1: PowerStats,
+    powerstats2: PowerStats
+  ): PowerstatsObject[] {
+    const finalObject = Object.keys(powerstats1).map((powerstat) => {
+      let obj = {
+        [powerstat]: powerstats1[powerstat as keyof PowerStats],
+        winner: false,
+      };
+      if (
+        powerstats1[powerstat as keyof PowerStats] >
+        powerstats2[powerstat as keyof PowerStats]
+      ) {
+        obj.winner = true;
+      }
+      return obj;
+    });
+    return finalObject;
+  }
+
+  //
   function getWinner(hero1: CardInterface, hero2: CardInterface): string {
     const sumHero1 = Object.keys(hero1.powerstats).reduce(
       (acc, cur) => (acc += hero1.powerstats[cur as keyof PowerStats]),
@@ -82,15 +94,8 @@ export default function BattleDialog({
   const hero1 = selectedHeroesInfos[0];
   const hero2 = selectedHeroesInfos[1];
 
-  const hero1Powerstats = createPowerstatsObject(hero1.powerstats);
-  const hero2Powerstats = createPowerstatsObject(hero2.powerstats);
-
-  // comparePowerstats(
-  //   hero1.powerstats,
-  //   hero2.powerstats,
-  //   hero1Powerstats,
-  //   hero2Powerstats
-  // );
+  const hero1Powerstats = comparePowerstats(hero1.powerstats, hero2.powerstats);
+  const hero2Powerstats = comparePowerstats(hero2.powerstats, hero1.powerstats);
 
   const winner = getWinner(hero1, hero2);
 

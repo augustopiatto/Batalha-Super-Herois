@@ -95,9 +95,23 @@ export default function BattleDialog({
   const winner = getWinner(hero1, hero2);
 
   return (
-    <Dialog onClose={() => toggleBattleModal(false)} open={open}>
-      <div className="bg-slate-500 p-10">
-        <h1 className="text-center">Vencedor é {winner}</h1>
+    <Dialog
+      onClose={() => toggleBattleModal(false)}
+      open={open}
+      fullWidth
+      maxWidth="lg"
+      sx={{
+        "& .MuiDialog-container": {
+          "& .MuiPaper-root": {
+            borderRadius: "24px",
+          },
+        },
+      }}
+    >
+      <div className="bg-black-light p-10">
+        <h1 className="text-3xl text-success font-semibold text-center mb-8">
+          Vencedor é {winner}
+        </h1>
         <div className=" grid grid-cols-5">
           <div className="col-span-1 text-center">
             <Image
@@ -107,47 +121,58 @@ export default function BattleDialog({
               width="0"
               sizes="100vw"
               priority
-              className="w-[250px] h-auto"
+              className="w-[250px] h-auto rounded-md border-4 border-black-dark"
             />
-            <h1>{hero1.name}</h1>
+            <h1 className="text-2xl text-grey mt-2">{hero1.name}</h1>
           </div>
-          <div className="col-span-1 ml-2">
+
+          <div className="col-span-1 flex flex-col justify-center items-start gap-2 ml-10">
             {hero1Powerstats.map((powerstat) => (
               <div
                 key={Object.keys(powerstat)[0]}
-                className="flex items-center"
+                className="flex items-center gap-4"
               >
-                <p>{powerstat[Object.keys(powerstat)[0]]} - </p>
+                <p className="text-xl text-grey">
+                  {powerstat[Object.keys(powerstat)[0]]}
+                </p>
                 <div
-                  className={`h-1 w-3 ml-2 ${
+                  className={`h-1 w-3 ${
                     powerstat.winner ? "bg-success" : "bg-error"
                   }`}
                 ></div>
               </div>
             ))}
           </div>
-          <div className="col-span-1">
+
+          <div className="col-span-1 flex flex-col justify-center gap-2">
             {Object.keys(hero1.powerstats).map((powerstat) => (
-              <p key={powerstat} className="capitalize text-center">
+              <p
+                key={powerstat}
+                className="text-xl text-grey text-center capitalize"
+              >
                 {powerstat}
               </p>
             ))}
           </div>
-          <div className="col-span-1 flex flex-col items-end mr-2">
+
+          <div className="col-span-1 flex flex-col justify-center items-end gap-2 mr-10">
             {hero2Powerstats.map((powerstat) => (
               <div
                 key={Object.keys(powerstat)[0]}
-                className="flex items-center"
+                className="flex items-center gap-4"
               >
                 <div
-                  className={`h-1 w-3 mr-2 ${
+                  className={`h-1 w-3 ${
                     powerstat.winner ? "bg-success" : "bg-error"
                   }`}
                 ></div>
-                <p>- {powerstat[Object.keys(powerstat)[0]]}</p>
+                <p className="text-xl text-grey">
+                  {powerstat[Object.keys(powerstat)[0]]}
+                </p>
               </div>
             ))}
           </div>
+
           <div className="col-span-1 text-center">
             <Image
               src={hero2.images.lg}
@@ -156,9 +181,9 @@ export default function BattleDialog({
               width="0"
               sizes="100vw"
               priority
-              className="w-[250px] h-auto col-span-1"
+              className="w-[250px] h-auto rounded-md border-4 border-black-dark"
             />
-            <h1>{hero2.name}</h1>
+            <h1 className="text-2xl text-grey mt-2">{hero2.name}</h1>
           </div>
         </div>
       </div>

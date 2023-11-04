@@ -39,10 +39,10 @@ export default function Card({ card }: Card) {
 
   const shadowHoverColor =
     card.biography.alignment === "good"
-      ? "hover:shadow-good-dark"
-      : "hover:shadow-evil-dark";
+      ? "hover:shadow-blue-dark"
+      : "hover:shadow-red-dark";
   const cardDetail =
-    card.biography.alignment === "good" ? "shadow-good" : "shadow-evil";
+    card.biography.alignment === "good" ? "shadow-blue" : "shadow-red";
 
   return (
     <div

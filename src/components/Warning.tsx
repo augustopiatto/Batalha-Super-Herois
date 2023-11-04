@@ -7,7 +7,7 @@ export default function Warning() {
 
   if (message)
     return (
-      <div className="flex justify-center">
+      <div className="flex justify-center my-5">
         <div className="bg-warning py-5 px-10 flex items-center gap-3">
           <Icon>warning</Icon>
           <p className="text-lg font-semibold">{message}</p>

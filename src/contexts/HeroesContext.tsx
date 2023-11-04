@@ -4,6 +4,7 @@ import React, { ReactNode } from "react";
 
 type HeroesContextType = {
   allPages: number;
+  currentPage: number;
   deck: CardInterface[];
   filteredDeck: CardInterface[];
   setFilteredDeck: (cards: CardInterface[]) => void;
@@ -18,6 +19,7 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
   const [deck, setDeck] = React.useState<CardInterface[]>([]);
   const [filteredDeck, setFilteredDeck] = React.useState<CardInterface[]>([]);
   const [allPages, setAllPages] = React.useState<number>(1);
+  const [currentPage, setCurrentPage] = React.useState<number>(1);
 
   const cardsPerPage = 10;
 
@@ -30,6 +32,7 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
     const firstTen: CardInterface[] = json.slice(0, cardsPerPage);
     setDeck(json);
     setFilteredDeck(firstTen);
+    setCurrentPage(1);
   }
 
   function loadFakeDeck() {
@@ -43,6 +46,7 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
       cardsPerPage * (page - 1) + 10
     );
     setFilteredDeck(newPage);
+    setCurrentPage(page);
   }
 
   React.useEffect(() => {
@@ -55,7 +59,14 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
 
   return (
     <HeroesContext.Provider
-      value={{ allPages, deck, filteredDeck, setFilteredDeck, selectPage }}
+      value={{
+        allPages,
+        currentPage,
+        deck,
+        filteredDeck,
+        setFilteredDeck,
+        selectPage,
+      }}
     >
       {children}
     </HeroesContext.Provider>

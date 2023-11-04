@@ -8,7 +8,8 @@ interface Filters {
 }
 
 export default function Filters({ opened }: Filters) {
-  const { deck, setFilteredDeck } = React.useContext(HeroesContext);
+  const { deck, currentPage, setFilteredDeck, selectPage } =
+    React.useContext(HeroesContext);
   const [name, setName] = React.useState<string | null>(null);
 
   const hidden = opened ? "" : "hidden";
@@ -18,7 +19,7 @@ export default function Filters({ opened }: Filters) {
       const filteredHero = deck.filter((hero) => hero.name === name);
       setFilteredDeck(filteredHero);
     } else {
-      setFilteredDeck(deck);
+      selectPage(currentPage);
     }
   }
 

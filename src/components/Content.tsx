@@ -58,7 +58,7 @@ export default function Content() {
         size="large"
         variant="outlined"
         shape="rounded"
-        className="pb-10 flex justify-center"
+        className="mt-auto pb-10 flex justify-center"
         onChange={handleChange}
       />
       {open && (

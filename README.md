@@ -2,7 +2,7 @@
 
 # Visão Geral do Projeto
 
-Este é um projeto que usa React, Typescript, Next, Material-UI e TailwindCSS.
+Este é um projeto que usa React, Typescript, Next, Material-UI, TailwindCSS e Vitest.
 É uma stack de desenvolvimento web moderna que é rápida e eficiente para construir aplicativos web escaláveis.
 
 # Preview
@@ -40,7 +40,8 @@ O projeto inclui as seguintes tecnologias:
 
 - React para construir interfaces de usuário reativas
 - TypeScript para desenvolvimento, escalabilidade e segurança de tipo
-- NextJS como
+- NextJS como criador de projeto React pré-configurado
+- Vitest para testes unitários
 
 # Funcionalidades
 
@@ -49,6 +50,7 @@ O projeto possui as seguintes funcionalidades:
 - Ver os personagens aos poucos, com paginação
 - Permitir ao usuário filtrar o herói
 - Permitir ao usuário escolher 2 heróis para um combate
+- Tela responsiva
 
 # Scripts
 

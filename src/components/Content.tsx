@@ -6,6 +6,7 @@ import React from "react";
 import { BattleContext } from "@/contexts/BattleContext";
 import BattleDialog from "./BattleDialog";
 import { HeroesContext } from "@/contexts/HeroesContext";
+import Warning from "./Warning";
 
 export default function Content() {
   const { selectedHeroesIds } = React.useContext(BattleContext);
@@ -41,6 +42,7 @@ export default function Content() {
           Batalhar!
         </Button>
       </div>
+      <Warning />
       <Pagination
         sx={{
           "& .MuiPaginationItem-root": {

@@ -3,6 +3,8 @@ import CardInterface from "@/interfaces/CardInterface";
 import Image from "next/image";
 import React from "react";
 import Switch from "@mui/material/Switch";
+import { WarningContext } from "@/contexts/WarningContext";
+import { HeroesContext } from "@/contexts/HeroesContext";
 
 interface Card {
   card: CardInterface;
@@ -11,6 +13,8 @@ interface Card {
 export default function Card({ card }: Card) {
   const { selectedHeroesIds, setSelectedHeroesIds } =
     React.useContext(BattleContext);
+  const { setMessage } = React.useContext(WarningContext);
+  const { deck } = React.useContext(HeroesContext);
 
   function selectHeroes(hero: CardInterface) {
     const wasCardSelected = !!selectedHeroesIds.includes(hero.id);
@@ -22,6 +26,14 @@ export default function Card({ card }: Card) {
         (selHero) => selHero !== hero.id
       );
       setSelectedHeroesIds(remainingHeroes);
+      setMessage("");
+    } else {
+      const selectedHeroesNames = deck.filter((card) =>
+        selectedHeroesIds.includes(card.id)
+      );
+      setMessage(
+        `Já existem 2 personagens selecionados. ${selectedHeroesNames[0].name} e ${selectedHeroesNames[1].name}`
+      );
     }
   }
 

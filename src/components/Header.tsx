@@ -7,9 +7,11 @@ import Icon from "@mui/material/Icon";
 
 export default function Header() {
   function openUserOptions() {
+    // Só existe pra ficar bonito, não faz nada
     return;
   }
   function routeToCards() {
+    // Só existe pra ficar bonito, não faz nada
     return;
   }
 

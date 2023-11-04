@@ -26,7 +26,7 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
       "http://homologacao3.azapfy.com.br/api/ps/metahumans"
     );
     const json = await response.json();
-    setAllPages(Math.floor(json.length / cardsPerPage));
+    setAllPages(Math.ceil(json.length / cardsPerPage));
     const firstTen: CardInterface[] = json.slice(0, cardsPerPage);
     setDeck(json);
     setFilteredDeck(firstTen);
@@ -38,7 +38,10 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
   }
 
   function selectPage(page: number) {
-    const newPage = deck.slice(cardsPerPage * page, cardsPerPage * page + 10);
+    const newPage = deck.slice(
+      cardsPerPage * (page - 1),
+      cardsPerPage * (page - 1) + 10
+    );
     setFilteredDeck(newPage);
   }
 

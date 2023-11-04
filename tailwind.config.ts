@@ -27,6 +27,7 @@ const config: Config = {
         "evil-dark": "rgb(198, 59, 50)",
         success: "rgb(4, 218, 0)",
         error: "rgb(232, 28, 0)",
+        warning: "rgb(212, 162, 31)",
       },
     },
   },

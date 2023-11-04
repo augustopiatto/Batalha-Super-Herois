@@ -1,5 +1,5 @@
 import { test, expect, describe } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { HeroesContext } from "@/contexts/HeroesContext";
 import { BattleContext } from "@/contexts/BattleContext";
 import Deck from "../Deck";

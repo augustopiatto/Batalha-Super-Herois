@@ -58,3 +58,4 @@ O projeto inclui os seguintes scripts:
 - `npm run build`: Builda o aplicativo pronto para produção
 - `npm run lint`: Linta e corrige os arquivos
 - `npm run start`: Inicia o servidor de produção
+- `npm run test`: Inicia os teste em modo de observação (`watch`)

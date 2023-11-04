@@ -1,5 +1,5 @@
 import React from "react";
-import SearchName from "./SearchName";
+import SearchName from "../SearchName";
 import { HeroesContext } from "@/contexts/HeroesContext";
 import { Button } from "@mui/material";
 

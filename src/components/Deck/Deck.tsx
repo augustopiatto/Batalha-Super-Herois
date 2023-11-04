@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../Card";
 import React from "react";
 import { HeroesContext } from "@/contexts/HeroesContext";
 import CircularProgress from "@mui/material/CircularProgress";

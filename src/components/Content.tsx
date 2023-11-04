@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
-import Deck from "./Deck";
+import Deck from "./Deck/Deck";
 import OpenFilters from "./filters/OpenFilters";
 import React from "react";
 import { BattleContext } from "@/contexts/BattleContext";

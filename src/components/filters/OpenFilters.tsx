@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-import Filters from "./Filters/Filters";
+import Filters from "./Filters";
 
 export default function OpenFilters() {
   const [opened, setOpened] = React.useState<boolean>(false);

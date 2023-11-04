@@ -25,7 +25,7 @@ export default function Content() {
   }
 
   return (
-    <div className="max-w-[1440px] mt-20 mx-auto bg-black min-h-content relative">
+    <div className="max-w-[1440px] mx-auto bg-black min-h-content relative">
       <Deck />
       <OpenFilters />
       <div className="w-full my-20 flex justify-center">
@@ -58,7 +58,7 @@ export default function Content() {
         size="large"
         variant="outlined"
         shape="rounded"
-        className="absolute bottom-10 left-1/2 translate-x-[-50%]"
+        className="mt-10 pb-10 flex justify-center"
         onChange={handleChange}
       />
       {open && (

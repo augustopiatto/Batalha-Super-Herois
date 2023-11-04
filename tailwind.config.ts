@@ -29,6 +29,10 @@ const config: Config = {
         error: "rgb(232, 28, 0)",
         warning: "rgb(212, 162, 31)",
       },
+      screens: {
+        "md-m": { max: "768px" },
+        "sm-m": { max: "320px" },
+      },
     },
   },
   plugins: [],

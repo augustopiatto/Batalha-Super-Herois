@@ -24,7 +24,7 @@ export default function Filters({ opened }: Filters) {
 
   return (
     <div
-      className={`${hidden} bg-grey w-[300px] h-full rounded-b-lg p-5 flex flex-col justify-between`}
+      className={`${hidden} bg-grey w-[300px] h-full rounded-b-lg p-5 flex flex-col justify-between sm-m:absolute sm-m:top-10 sm-m:right-0 sm-m:h-[200px] sm-m:rounded-s-lg`}
     >
       <SearchName deck={deck} setName={setName} />
       <div className="w-full mt-4 flex justify-center">

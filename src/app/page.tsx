@@ -9,14 +9,14 @@ import { WarningStorage } from "@/contexts/WarningContext";
 export default function Home() {
   return (
     <main>
-      <HeroesStorage>
-        <BattleStorage>
-          <WarningStorage>
+      <WarningStorage>
+        <HeroesStorage>
+          <BattleStorage>
             <Header />
             <Content />
-          </WarningStorage>
-        </BattleStorage>
-      </HeroesStorage>
+          </BattleStorage>
+        </HeroesStorage>
+      </WarningStorage>
     </main>
   );
 }

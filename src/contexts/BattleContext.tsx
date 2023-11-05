@@ -10,7 +10,7 @@ export const BattleContext = React.createContext<BattleContextType>(
   {} as BattleContextType
 );
 
-export const BattleStorage = ({ children }: { children: ReactNode }) => {
+export const BattleStorage = ({ children }: { children: ReactNode[] }) => {
   const [selectedHeroesIds, setSelectedHeroesIds] = React.useState<number[]>(
     []
   );

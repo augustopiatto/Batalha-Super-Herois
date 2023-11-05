@@ -9,7 +9,7 @@ export const WarningContext = React.createContext<WarningContextType>(
   {} as WarningContextType
 );
 
-export const WarningStorage = ({ children }: { children: ReactNode[] }) => {
+export const WarningStorage = ({ children }: { children: ReactNode }) => {
   const [message, setMessage] = React.useState<string>("");
 
   return (

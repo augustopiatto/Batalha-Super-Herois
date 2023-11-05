@@ -1,6 +1,7 @@
 import { fakeDeck } from "@/helpers/apimock/fakeDeck";
 import CardInterface from "@/interfaces/CardInterface";
 import React, { ReactNode } from "react";
+import { WarningContext } from "./WarningContext";
 
 type HeroesContextType = {
   allPages: number;
@@ -21,18 +22,27 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
   const [allPages, setAllPages] = React.useState<number>(1);
   const [currentPage, setCurrentPage] = React.useState<number>(1);
 
+  const { setMessage } = React.useContext(WarningContext);
+
   const cardsPerPage = 10;
 
   async function loadDeck() {
-    const response = await fetch(
-      "http://homologacao3.azapfy.com.br/api/ps/metahumans"
-    );
-    const json = await response.json();
-    setAllPages(Math.ceil(json.length / cardsPerPage));
-    const firstTen: CardInterface[] = json.slice(0, cardsPerPage);
-    setDeck(json);
-    setFilteredDeck(firstTen);
-    setCurrentPage(1);
+    try {
+      const response = await fetch(
+        "http://homologacao3.azapfy.com.br/api/ps/metahumans"
+      );
+      const json = await response.json();
+      setAllPages(Math.ceil(json.length / cardsPerPage));
+      const firstTen: CardInterface[] = json.slice(0, cardsPerPage);
+      setDeck(json);
+      setFilteredDeck(firstTen);
+      setCurrentPage(1);
+    } catch (error) {
+      let message = "Erro desconhecido";
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+      setMessage(message);
+    }
   }
 
   function loadFakeDeck() {
@@ -54,8 +64,9 @@ export const HeroesStorage = ({ children }: { children: ReactNode }) => {
       loadDeck();
       //: use o fakeDeck se não quiser ficar chamando a API
       // loadFakeDeck();
+      setMessage("");
     }
-  }, [deck]);
+  }, []);
 
   return (
     <HeroesContext.Provider

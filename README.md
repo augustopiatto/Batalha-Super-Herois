@@ -1,4 +1,4 @@
-# Azapy-ProcessoSeletivo
+# Jornada do Herói
 
 # Visão Geral do Projeto
 
@@ -7,7 +7,7 @@ Este é um projeto que usa React, Typescript, Next, Material-UI, TailwindCSS e V
 
 # Preview
 
-O projeto é um deck de super-heróis fornecido pela Azapy. Existe a listagem desses heróis e o modo de combate, que compara os `powerstats` de cada herói para decidir quem irá ganhar uma batalha.
+O projeto é um deck de super-heróis. Existe a listagem desses heróis e o modo de combate, que compara os `powerstats` de cada herói para decidir quem irá ganhar uma batalha.
 
 # Telas
 
